@@ -1,0 +1,17 @@
+config:
+  target: https://www.artillery.io
+  # Enable the Playwright engine:
+  phases:
+    - duration: 120
+      arrivalRate: 5
+      rampTo: 50
+      name: Warm up
+  engines:
+    playwright:
+      launchOptions:
+        headless: true
+  processor: "./loadTestScenario.js"
+scenarios:
+  - engine: playwright
+    flowFunction: "apiEcommerceLoadTest"
+    flow: []
